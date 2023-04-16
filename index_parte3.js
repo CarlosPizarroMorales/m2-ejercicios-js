@@ -1,5 +1,4 @@
-//TODO: ejercicio 3-4-8-9
-
+//TODO: ejercicio 3-4
 /**********************************************
 **                  EJERCICIO 1              **
 **********************************************/
@@ -8,7 +7,6 @@ console.log('\nEjercicio 1 - Calcula area triángulo')
 const areaTriangle = (h, b) => ( h * b ) / 2;
 
 console.log(areaTriangle(3,8));   // 12
-
 /**********************************************
 **                  EJERCICIO 2              **
 **********************************************/
@@ -17,7 +15,6 @@ console.log('\nEjercicio 2 - Calcula velocidad promedio')
 const velocMedia = (dist, time) => dist / time;
 
 console.log(velocMedia(100, 2));    // 2 (hrs?)
-
 /**********************************************
 **                  EJERCICIO 3              **
 **********************************************/
@@ -39,7 +36,6 @@ const sumaDigitos = n => n.toString().split('').reduce((a, b) => Number(a) + Num
 
 console.log('34 = ', sumaDigitos('34'));   // 7
 console.log('1234 = ', sumaDigitos('1234')); // 10
-
 /**********************************************
 **                  EJERCICIO 6              **
 **********************************************/
@@ -74,53 +70,34 @@ const stdDev = arr => {
 
 console.log('La desviación estándar de [1, 2, 3, 6] es: ')
 console.log(stdDev(setDatos));    // 1.87
-
-//! VERSION SOLO CON LOOP FOR
-// function desviacionEstandar(arr) {
-  
-//   // paso 1 - calcula media de arr
-//   let acum = 0;
-//   for (let i = 0; i < arr.length; i++) {
-//     acum += arr[i];
-//   }
-//   const media = acum / arr.length;
-  
-//   // paso 2 - cuadrado de media a distancia de cada elemento
-//   const arrCuadrados = [];
-//   for (let i = 0; i < arr.length; i++) {
-//     const cuadrado = (media - arr[i]) ** 2;
-//     arrCuadrados.push(cuadrado);
-//   }
-  
-//   // paso 3 - sumar elementos de arrCuadrados
-//   let sumaCuadrados = 0;
-//     for (let i = 0; i < arrCuadrados.length; i++) {
-//     sumaCuadrados += arrCuadrados[i];
-//   }
-  
-//   // paso 4 - sacar media de suma Cuadrados
-//   const mediaCuadrados = sumaCuadrados / arrCuadrados.length;
-  
-//   // paso 5 - sacar raiz2 de media
-//   const varEst = Math.sqrt(mediaCuadrados);
-  
-//   return varEst;
-// }
-
 /**********************************************
 **                  EJERCICIO 8              **
 **********************************************/
-console.log('\nEjercicio 8')
+console.log('\nEjercicio 8 - Encuentra mediana');
 
+const obtenerMediana = arr => {
+  arr.sort((a, b) => a - b);
+  const central = parseInt(arr.length / 2);
+  const parOrNot = arr.length % central;
+  return parOrNot === 0 ? (arr[central-1] + arr[central]) / 2 : arr[central];
+}
 
+const a = [8, 9, 5, 1, 6];
+const b = [12, 5, 7, 2, 3, 6];
 
+console.log(`La mediana de ${[...a]} es ${obtenerMediana(a)}`);
+console.log(`La mediana de ${[...b]} es ${obtenerMediana(b)}`);
+//https://mediancalculator.com/es/
 /**********************************************
 **                  EJERCICIO 9              **
 **********************************************/
-console.log('\nEjercicio 9')
+console.log('\nEjercicio 9 - Calcula impuesto');
 
+const impuesto = (anual, tasa) => anual * (tasa / 100);
 
-
+let tasa = 20;
+let anual = 10000000
+console.log(`El impuesto a pagar para $${anual} al ${tasa}% es: $${impuesto(anual, tasa)}`);
 /**********************************************
 **                 EJERCICIO 10              **
 **********************************************/
