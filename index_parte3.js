@@ -1,4 +1,3 @@
-//TODO: ejercicio 3-4
 /**********************************************
 **                  EJERCICIO 1              **
 **********************************************/
@@ -18,15 +17,32 @@ console.log(velocMedia(100, 2));    // 2 (hrs?)
 /**********************************************
 **                  EJERCICIO 3              **
 **********************************************/
-console.log('\nEjercicio 3 - ')
-
+console.log('\nEjercicio 3 - Calcula valor final inversión');
+const valorFinal = (cap, int, time) => Math.round(cap * (1 + time * (int / 100)));
+const data = {cap: 15000, int: 24, time: 1.5};
+console.log(`El valor final de ${data.cap} a ${data.int}% anual durante ${data.time} años es: $${valorFinal(data.cap, data.int, data.time)}.`);
 
 
 /**********************************************
 **                  EJERCICIO 4              **
 **********************************************/
-console.log('\nEjercicio 4 - ')
+console.log('\nEjercicio 4 - Calcule costo crédito')
+const costoPrestamo = (capital, tasa, cuotas) => {
+  tasaMes = (tasa / 100) / 12;
+  valorCuota = (capital * tasaMes) / (1 - (1 + tasaMes) ** -cuotas);
+  return Math.round(valorCuota * cuotas);
+}
 
+let capital = 1000000;
+let tasaAnual = 20;
+let cuotas = 60;
+
+const valorFormato = new Intl.NumberFormat('es-ES', {style: 'currency', currency: 'CLP'}).format(costoPrestamo(capital, tasaAnual, cuotas));
+console.log(`El costo de un crédito de capital $${capital} en ${cuotas} cuotas con tasa ${tasaAnual}% es: $${valorFormato}.`);
+// CHECKED: Intl.NumberFormat() funciona en browser y Node
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+// https://stackoverflow.com/questions/5731193/how-to-format-numbers
+// https://calcuonline.com/calculadoras/calculadora-prestamos/
 /**********************************************
  **                  EJERCICIO 5              **
  **********************************************/
